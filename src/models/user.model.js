@@ -22,8 +22,11 @@ const UserSchema = new Schema({
   },
   admin: {
     type: Boolean
-  },
+  }
+}, 
+{
   timestamps: true
-});
+}
+);
 
 module.exports = mongoose.model('User', UserSchema);

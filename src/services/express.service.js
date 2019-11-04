@@ -1,12 +1,16 @@
 const express = require('express');
 const config = require('../configs/server.config.js');
 const bodyParser = require('body-parser');
+const apiRouter = require('../routes/user.route');
 
 // Start express
 const app = express();
 
 // Middleware
 app.use(bodyParser.json());
+
+// routes
+app.use('/api/v1', apiRouter);
 
 exports.start = () => {
   let port = config.port;
