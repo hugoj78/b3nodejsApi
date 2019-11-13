@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const configs = require('../configs/jwt.config');
 
 function verifyToken(req, res, next) {
     // First step: get token
@@ -10,7 +11,7 @@ function verifyToken(req, res, next) {
             message: 'missing token'
         })
     }
-    jwt.verify(token, configs.jwt.secret, function(err, decoded){
+    jwt.verify(token, configs.secret, function(err, decoded){
         if(err) {
             console.log(err);
             return res.status(401).send({
@@ -19,6 +20,7 @@ function verifyToken(req, res, next) {
             })
         }
     });
+    next();
 }
 
 module.exports = verifyToken;

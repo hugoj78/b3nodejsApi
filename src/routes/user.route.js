@@ -5,6 +5,6 @@ const verifyToken = require ('../helpers/verifyToken');
 
 // Create a new User
 router.post('/users', user.create);
-router.get('/users', verifyToken,user.findAll);
+router.get('/users', verifyToken, user.findAll);
 
 module.exports = router;
