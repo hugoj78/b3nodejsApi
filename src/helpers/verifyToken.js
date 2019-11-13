@@ -4,7 +4,7 @@ const configs = require('../configs/jwt.config');
 function verifyToken(req, res, next) {
     // First step: get token
     let token = req.headers['x-access-token'];
-    // Second step: 
+    // Second step: check token 
     if(!token) {
         return res.status(400).send({
             auth:false,
@@ -20,6 +20,7 @@ function verifyToken(req, res, next) {
             })
         }
     });
+    // Third step: next step -------->
     next();
 }
 
