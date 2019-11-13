@@ -20,7 +20,7 @@ function verifyToken(req, res, next) {
             })
         }
     });
-    // Third step: next step -------->
+    // Third step: next step --------> WASS LA MENACE
     next();
 }
 
