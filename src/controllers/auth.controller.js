@@ -1,4 +1,5 @@
 const User = require('../models/user.model');
+const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 exports.create = (req, res) => {
@@ -13,7 +14,21 @@ exports.create = (req, res) => {
 
   user.save()
     .then(data => {
-      res.send(data);
+      let usertoken = jwt.sign(
+        {
+          id:user.email,
+          admin:user.admin
+      },
+      "supersecret",
+      {
+        expiresIn:86400
+      }
+      )
+      res.send({
+        auth: true,
+        token: usertoken,
+        body: data
+      });
     }).catch(err => {
       res.status(500).send({
         message: err.message
