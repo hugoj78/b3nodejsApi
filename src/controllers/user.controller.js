@@ -65,8 +65,8 @@ exports.updateById = (req, res) => {
 // Delete User by Id
 exports.deleteByID = (req, res) => {
   User.findByIdAndDelete(req.params.id)
-  .then(user => {
-    res.send(user);
+  .then(users => {
+    res.send(users);
   })
   .catch(err => {
     res.status(500).send({
@@ -78,8 +78,8 @@ exports.deleteByID = (req, res) => {
 // Delete All User
 exports.deleteAllUser = (req, res) => {
   User.remove()
-  .then(user => {
-    res.send(user);
+  .then(users => {
+    res.send(users);
   })
   .catch(err => {
     res.status(500).send({
