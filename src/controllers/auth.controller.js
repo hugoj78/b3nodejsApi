@@ -56,7 +56,7 @@ exports.login = (req, res) => {
       }
       let usertoken = jwt.sign(
         {
-          id: user.email,
+          id: user._id,
           admin: user.admin
         },
         jwtPwd.secret,

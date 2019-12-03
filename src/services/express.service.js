@@ -2,6 +2,7 @@ const express = require('express');
 const config = require('../configs/server.config.js');
 const bodyParser = require('body-parser');
 const apiRouter = require('../routes');
+const cors = require('cors');
 
 // Start express
 const app = express();
@@ -10,14 +11,7 @@ const app = express();
 app.use(bodyParser.json());
 
 // CORS block
-app.use(function (req, res, next) {
-  res.setHeader('Content-type', 'application/json');
-  res.setHeader('Accept', 'application/json');
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Origin, Accept, Content-Type, Authorization, Access-Control-Allow-Origin');
-  next();
-});
+app.use(cors());
 
 // routes
 app.use('/api/v1', apiRouter);
