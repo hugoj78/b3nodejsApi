@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const AdminSchema = new Schema(
+const AccountSchema = new Schema (
     {
         firstname: {
             type: String,
@@ -35,4 +35,4 @@ const AdminSchema = new Schema(
     }
 );
 
-module.exports = mongoose.model('Admin', AdminSchema);
+module.exports = mongoose.model('Account', AccountSchema);

@@ -7,16 +7,15 @@ function verifyToken(req, res, next) {
     // Second step: check token 
     if(!token) {
         return res.status(400).send({
-            auth:false,
+            auth: false,
             message: 'missing token'
         })
     }
     jwt.verify(token, configs.secret, function(err, decoded){
         if(err) {
-            console.log(err);
             return res.status(401).send({
-                auth:false,
-                message: 'no authorized'
+                auth: false,
+                message: 'invalid token'
             })
         }
     });
