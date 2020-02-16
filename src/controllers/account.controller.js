@@ -79,3 +79,17 @@ exports.login = (req, res) => {
         });
     });
 };
+
+exports.getAccount = (req, res) => {
+    if(!res.headersSent) {
+        Account.findById(_id = req.params.id)
+            .then(account => {
+                res.send(account);
+            })
+            .catch(err => {
+                res.status(500).send({
+                    message: err.message || "Some error occurred when finding the account."
+                })
+            })
+    }
+};
